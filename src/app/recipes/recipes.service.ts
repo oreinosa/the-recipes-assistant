@@ -9,12 +9,13 @@ import { map } from 'rxjs/operators';
 import { Section } from '../shared/models/section';
 import { Component } from '../shared/models/component';
 import { Instruction } from '../shared/models/instruction';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipesService {
-  private api = 'http://localhost:5000/my-recipes-assistant/us-central1';
+  private api = environment.api;
   searchSubject = new Subject<string>();
   currentPostSubject = new Subject<Post>();
 

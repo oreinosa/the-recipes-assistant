@@ -13,7 +13,8 @@ export const environment = {
     messagingSenderId: "977921768921",
     appId: "1:977921768921:web:b9320888dce7117511adc8",
     measurementId: "G-WEWKHE4NGN"
-  }
+  },
+  api: 'http://localhost:5000/my-recipes-assistant/us-central1'
 };
 
 /*
