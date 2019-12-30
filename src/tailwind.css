@@ -1,0 +1,10 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.preview-container:hover h3{
+  transition: transform .5s ease;
+  @apply text-blue-500
+}

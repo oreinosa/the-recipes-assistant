@@ -1,0 +1,19 @@
+<div class="flex text-white">
+  <div class="w-1/4 py-6">
+    <mat-spinner *ngIf='isLoading' diameter='30' color='accent' class='mx-auto align-middle'></mat-spinner>
+  </div>
+  <div class="w-3/4">
+    <mat-form-field class="w-full text-base">
+      <input type="text" placeholder="Search recipes..." matInput [formControl]="searchControl"
+        [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <!-- <mat-option *ngIf='isLoading' disabled>
+          <mat-spinner diameter='50' class='mx-auto py-5'></mat-spinner>
+        </mat-option> -->
+        <mat-option *ngFor="let result of results | async" [value]="result">
+          {{ result.display }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+</div>

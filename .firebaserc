@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "my-recipes-assistant": {
+      "hosting": {
+        "the-recipes-assistant": [
+          "my-recipes-assistant"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "my-recipes-assistant"
+  }
+}
