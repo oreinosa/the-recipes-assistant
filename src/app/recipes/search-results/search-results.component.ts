@@ -13,7 +13,7 @@ import { Post } from 'src/app/shared/models/post';
 export class SearchResultsComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject();
   query: string = '';
-  results: Post[] = [];
+  posts: Post[] = [];
   constructor(
     private recipesService: RecipesService,
     private router: Router,
@@ -31,9 +31,9 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
       }),
       switchMap(query => this.recipesService.getSearchResults(query))
     )
-      .subscribe((results: Post[]) => {
-        console.log(results);
-        this.results = results;
+      .subscribe((posts: Post[]) => {
+        console.log(posts);
+        this.posts = posts;
       });
 
   }

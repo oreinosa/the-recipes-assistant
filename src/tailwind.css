@@ -4,7 +4,10 @@
 
 @tailwind utilities;
 
-.preview-container:hover h3{
+.preview-container:hover a h1, .preview-container:hover a h2{
   transition: transform .5s ease;
-  @apply text-blue-500
+  @apply text-blue-500;
+}
+.header-post-preview-container:hover a h1{
+  @apply text-black;
 }

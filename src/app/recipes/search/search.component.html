@@ -1,0 +1,14 @@
+<div class="flex text-white">
+  <ng-container *ngIf='handset === "xs" || handset === "sm";else showInput'>
+    <div class="w-full mx-auto">
+      <button mat-icon-button (click)='openDialog()'>
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+  <ng-template #showInput>
+    <div class="w-full">
+      <app-searchbox></app-searchbox>
+    </div>
+  </ng-template>
+</div>

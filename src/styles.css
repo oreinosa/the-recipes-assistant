@@ -602,27 +602,27 @@ video {
   width: 100%;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
   .container {
-    max-width: 640px;
+    max-width: 600px;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
+    max-width: 960px;
   }
 }
 
 @media (min-width: 1280px) {
   .container {
     max-width: 1280px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1920px;
   }
 }
 
@@ -10616,12 +10616,16 @@ video {
   z-index: auto;
 }
 
-.preview-container:hover h3{
-  transition: transform .5s ease;
-  color: #4299e1
+.preview-container:hover a h1, .preview-container:hover a h2 {
+  transition: transform 0.5s ease;
+  color: #4299e1;
 }
 
-@media (min-width: 640px) {
+.header-post-preview-container:hover a h1 {
+  color: #000;
+}
+
+@media (min-width: 600px) and (max-width: 959.99px) {
   .sm\:sr-only {
     position: absolute;
     width: 1px;
@@ -20613,7 +20617,7 @@ video {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) and (max-width: 1279.99px) {
   .md\:sr-only {
     position: absolute;
     width: 1px;
@@ -30605,7 +30609,7 @@ video {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) and (max-width: 1919.99px) {
   .lg\:sr-only {
     position: absolute;
     width: 1px;
@@ -40597,7 +40601,7 @@ video {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1920px) {
   .xl\:sr-only {
     position: absolute;
     width: 1px;

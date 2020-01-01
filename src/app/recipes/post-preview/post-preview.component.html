@@ -1,8 +1,8 @@
-<div class="cursor-pointer preview-container" (click)='selectPost()'>
-  <a [routerLink]="link">
-    <div class="h-64 mb-2 image-container">
+<div class="cursor-pointer preview-container" >
+  <a [routerLink]="link" (click)='selectPost()'>
+    <div class="h-64 mb-2 thumbnail-image-container">
       <img class='rounded h-full w-full' [src]="post?.thumbnail_url" [alt]="post?.name">
     </div>
-    <h3 class='text-blue-'>{{ post?.name }}</h3>
+    <h1 class='text-black'>{{ post?.name }}</h1>
   </a>
 </div>

@@ -1,3 +1,3 @@
 
 
-export { getSearchResults, getAutoComplete, getFeed } from './recipes-local';
+export { getSearchResults, getAutoComplete, getFeed, getPostDetails } from './recipes-local';

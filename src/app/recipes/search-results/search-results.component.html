@@ -1,8 +1,8 @@
 <div class="px-12">
   <h1 class="text-yellow text-lg mb-5">Searching for '{{ query }}'</h1>
   <div class='flex flex-wrap -mx-2 lg:-mx-6 xl:-mx-1 w-full mb-4'>
-    <div class="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 px-2 lg:px-6 xl:px-1  mb-5" *ngFor='let result of results'>
-      <app-post-preview [post]='result'></app-post-preview>
+    <div class="w-full sm:w-1/2 sm:px-5 md:w-1/3 md:px-3 lg:w-1/3 lg:px-5 mb-5" *ngFor='let post of posts'>
+      <app-post-preview [post]='post'></app-post-preview>
     </div>
   </div>
 </div>

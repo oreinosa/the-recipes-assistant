@@ -9,7 +9,9 @@ import {
   MatIconModule,
   MatListModule,
   MatAutocompleteModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDialogModule,
+  
 } from '@angular/material';
 
 
@@ -25,7 +27,9 @@ import {
     MatIconModule,
     MatListModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    
   ],
   exports: [
     CommonModule,
@@ -37,7 +41,9 @@ import {
     MatIconModule,
     MatListModule,
     MatAutocompleteModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    
   ]
 })
 export class SharedModule { }

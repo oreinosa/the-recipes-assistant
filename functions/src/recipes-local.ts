@@ -14,7 +14,7 @@ const getSearchResultsFromTasty = async (q: string) => {
   }
 };
 
-const autoCompletes = [
+const autoCompletes: any[] = [
   { display: "meatballs" },
   { display: "meat" },
   { display: "chicken nuggets" },
@@ -94,4 +94,39 @@ export const getFeed = functions.https.onRequest(async (request, response) => {
     });
   }
 
+});
+
+const getPostDetailsFromTasty = (slug: string) => {
+  // try {
+  const response = RESULTS.find((result: any) => {
+    return result.slug === slug;
+  });
+  return response;
+  // } catch (e) {
+  //   console.log(e);
+  //   throw e;
+  // }
+}
+
+export const getPostDetails = functions.https.onRequest(async (request, response) => {
+  const { slug } = request.query; // get 'slug' param from request
+  response.set({ 'Access-Control-Allow-Origin': '*' });
+  let error = 'Please specify a slug for this request'; // default error message 
+  if (slug && slug !== "") { // check if 'slug' param is valid
+    try {
+      const results = getPostDetailsFromTasty(slug); // get auto complete results from API using recieved slug
+      return response.status(200).send(results); // return array with results
+    } catch (error) {
+      // return object with error 
+      return response.status(400).send({
+        error,
+        code: 400
+      });
+    }
+  }
+  // if 'slug' is not valid, return object with error
+  return response.status(400).send({
+    error,
+    code: 400
+  });
 });

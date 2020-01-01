@@ -1,1 +1,15 @@
-<p>recipe works!</p>
+<ng-container *ngIf='$post | async as post;else loadingPost'>
+  <h1 class='text-lg'>{{ post?.name }}</h1>
+  <ol class='list-decimal'>
+    <ng-container *ngFor='let instruction of post?.instructions'>
+      <li>
+        <h1 class='text-base'>{{ instruction.display_text }}</h1>
+      </li>
+    </ng-container>
+  </ol>
+
+
+</ng-container>
+<ng-template #loadingPost>
+  <mat-spinner class="mx-auto" diameter='50'></mat-spinner>
+</ng-template>

@@ -1,0 +1,17 @@
+<div class="cursor-pointer header-post-preview-container preview-container">
+  <a [routerLink]="link" class='flex flex-wrap md:-mx-4 lg:-mx-2'>
+    <div class="w-full sm:w-full md:w-1/2 md:px-4 lg:w-2/4 lg:px-2 ml-auto">
+      <h2 class="inline-block text-2xl bg-red-200 p-3 mb-2 font-bold">
+        TRY THIS!
+      </h2>
+      <h1 class="mb-3 inline-block text-4xl bg-red-400 p-2 text-white">
+        {{ post?.name }}
+      </h1>
+    </div>
+    <div class="w-full sm:w-full md:w-1/2 md:px-4 lg:w-2/4 lg:px-2 mr-auto">
+      <div class="mb-2 thumbnail-image-container">
+        <img class='rounded h-full w-full' [src]="post?.thumbnail_url" [alt]="post?.name">
+      </div>
+    </div>
+  </a>
+</div>

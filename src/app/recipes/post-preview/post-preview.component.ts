@@ -9,22 +9,25 @@ import { RecipesService } from '../recipes.service';
   styleUrls: ['./post-preview.component.scss']
 })
 export class PostPreviewComponent implements OnInit {
-  @Input() post : Post;
-  link: string;
+  @Input() post: Post;
+  link: string = '';
   constructor(
     private recipesService: RecipesService
   ) { }
 
   ngOnInit() {
+    let link = '';
     let type = '/recipe';
-    if(!!(this.post as Compilation).recipes){
+    // console.log(this.post instanceof Compilation);
+    if (this.post instanceof Compilation) {
       type = `/compilation`;
     }
     this.link = `${type}/${this.post.slug}`;
   }
 
-  selectPost(){
-    this.recipesService.currentPostSubject.next(this.post);
+  selectPost() {
+    console.log('selected ', this.post.name);
+    this.recipesService.setCurrentPost(this.post);
   }
 
 }
