@@ -1,7 +1,7 @@
 import { Rendition } from './rendition';
 import { Tag } from './tag';
 
-export class Post {
+export abstract class Post {
   constructor(
     public id?: string,
     public keywords?: string,
@@ -14,5 +14,5 @@ export class Post {
     public tags?: Tag[],
   ) { }
 
-
+  abstract get link(): string;
 }

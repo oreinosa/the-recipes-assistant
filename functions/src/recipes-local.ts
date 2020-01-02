@@ -99,7 +99,7 @@ export const getFeed = functions.https.onRequest(async (request, response) => {
 const getPostDetailsFromTasty = (slug: string) => {
   // try {
   const response = RESULTS.find((result: any) => {
-    return result.slug === slug;
+    return result.slug == slug;
   });
   return response;
   // } catch (e) {
@@ -115,6 +115,7 @@ export const getPostDetails = functions.https.onRequest(async (request, response
   if (slug && slug !== "") { // check if 'slug' param is valid
     try {
       const results = getPostDetailsFromTasty(slug); // get auto complete results from API using recieved slug
+      console.log(results);
       return response.status(200).send(results); // return array with results
     } catch (error) {
       // return object with error 

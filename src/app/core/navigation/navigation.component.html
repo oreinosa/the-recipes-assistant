@@ -23,15 +23,10 @@
   </mat-sidenav-content>
 </mat-sidenav-container> -->
 
-<mat-toolbar color="primary" >
-  <div class="w-8/12 sm:w-6/12 md:w-2/6 lg:w-1/6 mr-auto">
-    <h1 id='app-title' class='text-white text-base cursor-pointer' routerLink='/'>My Recipes Assistant</h1>
-  </div>
-  <div class="w-2/12 sm:w-1/12 md:w-2/6 lg:w-2/6 ml-auto">
-    <app-search [handset]='(isHandset$ | async)'></app-search>
-  </div>
-</mat-toolbar>
+<app-toolbar [isHandset]='isHandset$ | async'></app-toolbar>
 
 <div class="container mx-auto px-5 py-5">
   <ng-content></ng-content>
 </div>
+
+<app-footer></app-footer>

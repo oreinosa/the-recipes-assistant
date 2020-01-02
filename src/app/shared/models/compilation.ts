@@ -18,4 +18,8 @@ export class Compilation extends Post {
   ) {
     super(id, keywords, credits, name, renditions, description, slug, thumbnail_url, tags);
   }
+
+  get link(): string {
+    return `compilation/${this.slug}`;
+  }
 }

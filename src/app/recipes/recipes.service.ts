@@ -7,6 +7,9 @@ import { Recipe } from '../shared/models/recipe';
 import { Compilation } from './../shared/models/compilation';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Section } from '../shared/models/section';
+import { Component } from '../shared/models/component';
+import { Instruction } from '../shared/models/instruction';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +40,9 @@ export class RecipesService {
   //                   return {
   //                     url: rendition.url,
   //                     height: rendition.height,
-  //                     width: rendition.width
+  //                     width: rendition.width,
+  //                     content_type: rendition.content_type
+
   //                   };
   //                 }),
   //                 tags: recipe.tags.map(tag => {
@@ -80,7 +85,9 @@ export class RecipesService {
   //               return {
   //                 url: rendition.url,
   //                 height: rendition.height,
-  //                 width: rendition.width
+  //                 width: rendition.width,
+  //                     content_type: rendition.content_type
+
   //               };
   //             }),
   //             tags: result.tags.map(tag => {
@@ -102,7 +109,9 @@ export class RecipesService {
   //             return {
   //               url: rendition.url,
   //               height: rendition.height,
-  //               width: rendition.width
+  //               width: rendition.width,
+  //                     content_type: rendition.content_type
+
   //             };
   //           }),
   //           tags: result.tags.map(tag => {
@@ -216,7 +225,8 @@ export class RecipesService {
   //                 return {
   //                   url: rendition.url,
   //                   height: rendition.height,
-  //                   width: rendition.width
+  //                   width: rendition.width,
+  //                   content_type: rendition.content_type
   //                 };
   //               }),
   //               tags: recipe.tags.map(tag => {
@@ -259,7 +269,8 @@ export class RecipesService {
   //             return {
   //               url: rendition.url,
   //               height: rendition.height,
-  //               width: rendition.width
+  //               width: rendition.width,
+  //               content_type: rendition.content_type
   //             };
   //           }),
   //           tags: result.tags.map(tag => {
@@ -281,7 +292,8 @@ export class RecipesService {
   //           return {
   //             url: rendition.url,
   //             height: rendition.height,
-  //             width: rendition.width
+  //             width: rendition.width,
+  //                   content_type: rendition.content_type
   //           };
   //         }),
   //         tags: result.tags.map(tag => {

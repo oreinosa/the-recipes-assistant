@@ -2,7 +2,7 @@ import { RecipesService } from './../recipes.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil, map, tap, switchMap } from 'rxjs/operators';
+import { takeUntil, map, tap, switchMap, finalize } from 'rxjs/operators';
 import { Post } from 'src/app/shared/models/post';
 
 @Component({
@@ -13,7 +13,8 @@ import { Post } from 'src/app/shared/models/post';
 export class SearchResultsComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject();
   query: string = '';
-  posts: Post[] = [];
+  posts: Post[] = null;
+  isLoading = false;
   constructor(
     private recipesService: RecipesService,
     private router: Router,
@@ -26,10 +27,12 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
       takeUntil(this.ngUnsubscribe),
       map(params => params.get('q')),
       tap(query => {
+        this.isLoading = true;
+        this.posts = null;
         this.query = query;
         console.log(query);
       }),
-      switchMap(query => this.recipesService.getSearchResults(query))
+      switchMap(query => this.recipesService.getSearchResults(query).pipe(finalize(() => this.isLoading = false)))
     )
       .subscribe((posts: Post[]) => {
         console.log(posts);

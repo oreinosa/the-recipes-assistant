@@ -6,7 +6,7 @@ import { Post } from './post';
 import { Rendition } from './rendition';
 import { Tag } from './tag';
 
-export class Recipe extends Post{
+export class Recipe extends Post {
   constructor(
     public id?: string,
     public keywords?: string,
@@ -27,7 +27,11 @@ export class Recipe extends Post{
     public sections?: Section[],
     public instructions?: Instruction[],
     public user_ratings?: UserRating
-  ) { 
+  ) {
     super(id, keywords, credits, name, renditions, description, slug, thumbnail_url, tags);
+  }
+
+  get link(): string {
+    return `recipe/${this.slug}`;
   }
 }

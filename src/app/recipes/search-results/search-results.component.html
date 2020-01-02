@@ -1,8 +1,14 @@
-<div class="px-12">
+<div class="xl:w-2/3 xl:mx-auto ">
   <h1 class="text-yellow text-lg mb-5">Searching for '{{ query }}'</h1>
-  <div class='flex flex-wrap -mx-2 lg:-mx-6 xl:-mx-1 w-full mb-4'>
-    <div class="w-full sm:w-1/2 sm:px-5 md:w-1/3 md:px-3 lg:w-1/3 lg:px-5 mb-5" *ngFor='let post of posts'>
-      <app-post-preview [post]='post'></app-post-preview>
+  <ng-container *ngIf='posts;else loadingPosts'>
+    <div class='flex flex-wrap sm:-mx-5 md:-mx-3 lg:-mx-3 xl:-mx- w-full mb-4'>
+      <div class="w-full sm:w-1/2 sm:px-5 md:w-1/3 md:px-3 lg:w-1/4 lg:px-3 xl:w-1/4 xl:px- mb-5"
+        *ngFor='let post of posts'>
+        <app-post-preview [post]='post'></app-post-preview>
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #loadingPosts>
+    <mat-spinner class="mx-auto" diameter='30'></mat-spinner>
+  </ng-template>
 </div>

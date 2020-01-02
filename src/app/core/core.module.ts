@@ -8,10 +8,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './home/home.component';
 import { RecipesModule } from '../recipes/recipes.module';
+import { FooterComponent } from './footer/footer.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 
 @NgModule({
-  declarations: [NavigationComponent, HomeComponent],
+  declarations: [NavigationComponent, HomeComponent, FooterComponent, ToolbarComponent],
   imports: [
     SharedModule,
     RecipesModule,

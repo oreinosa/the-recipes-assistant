@@ -1,14 +1,52 @@
 <ng-container *ngIf='$post | async as post;else loadingPost'>
-  <h1 class='text-lg'>{{ post?.name }}</h1>
-  <ol class='list-decimal'>
-    <ng-container *ngFor='let instruction of post?.instructions'>
-      <li>
-        <h1 class='text-base'>{{ instruction.display_text }}</h1>
-      </li>
-    </ng-container>
-  </ol>
+  <div class="recipe-container flex flex-wrap md:-mx-3">
+    <div class="w-full mb-5">
+      <h1 class="text-2xl text-gray-600 text-bold">{{ post?.name }}</h1>
+    </div>
+    <div class="w-full md:w-1/3 md:px-3 mb-5 video-container">
+      <ng-container *ngIf='post?.renditions && post?.renditions?.length;else noVideo'>
+        <app-video-player [renditions]='post.renditions'></app-video-player>
+      </ng-container>
+      <ng-template #noVideo>
+        <img [src]="post?.thumbnail_url" [alt]="post?.name" class='rounded'>
+      </ng-template>
+    </div>
+    <div class="w-full md:w-1/3 md:px-3 ">
+      <ng-container *ngIf='post?.sections?.length === 1; else showSections'>
+        <h1 class="text-lg text-gray-800 text-bold mb-1">Ingredients</h1>
+        <h1 class="text-lg text-black text-bold mb-2">for {{ post?.num_servings }}
+          {{ post?.num_servings > 1 ? post?.servings_noun_plural : post?.servings_noun_singular }}
+        </h1>
+        <h1 class="text-base text-gray-700" *ngFor='let component of post?.sections[0]?.components'>
+          {{ component.raw_text }}
+        </h1>
+      </ng-container>
+      <ng-template #showSections>
+        <ng-container *ngFor='let section of post?.sections'>
+          <div class="section-container mb-2">
+            <h1 class="text-lg text-gray-800 text-bold mb-2">{{ section?.name}}</h1>
+            <h1 class="text-base text-black" *ngFor='let component of section?.components'>
+              {{ component.raw_text }}
+            </h1>
+          </div>
+        </ng-container>
+      </ng-template>
+    </div>
+    <div class="w-full md:w-1/3 md:px-3 ">
+      <h1 class="text-lg text-gray-800 text-bold mb-2">Preparation</h1>
+      <ol class="list-decimal">
+        <ng-container *ngFor='let instruction of post?.instructions'>
+          <li>
+            <h1 class="text-base text-gray-700">
+              {{ instruction?.display_text }}
+            </h1>
+          </li>
+        </ng-container>
+      </ol>
 
+    </div>
 
+  </div>
 </ng-container>
 <ng-template #loadingPost>
   <mat-spinner class="mx-auto" diameter='50'></mat-spinner>

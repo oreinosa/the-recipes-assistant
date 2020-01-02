@@ -10625,6 +10625,28 @@ video {
   color: #000;
 }
 
+input.form-input {
+  background-color: #fff;
+  border-width: 1px;
+  border-color: #e2e8f0;
+  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  line-height: 1.5;
+}
+
+input.form-input:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}
+
 @media (min-width: 600px) and (max-width: 959.99px) {
   .sm\:sr-only {
     position: absolute;

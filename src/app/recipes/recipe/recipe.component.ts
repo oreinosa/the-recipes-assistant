@@ -3,7 +3,7 @@ import { RecipesService } from './../recipes.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Post } from '../../shared/models/post';
+import { Recipe } from 'src/app/shared/models/recipe';
 
 @Component({
   selector: 'app-recipe',
@@ -11,7 +11,7 @@ import { Post } from '../../shared/models/post';
   styleUrls: ['./recipe.component.scss']
 })
 export class RecipeComponent implements OnInit {
-  $post: Observable<Post>;
+  $post: Observable<Recipe>;
   constructor(
     private route: ActivatedRoute,
     private recipesService: RecipesService

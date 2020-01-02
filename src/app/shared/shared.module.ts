@@ -11,12 +11,13 @@ import {
   MatAutocompleteModule,
   MatProgressSpinnerModule,
   MatDialogModule,
-  
+
 } from '@angular/material';
+import { VideoPlayerComponent } from './components/video-player/video-player.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [VideoPlayerComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -29,12 +30,13 @@ import {
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    
+
   ],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    VideoPlayerComponent,
     MatCardModule,
     MatButtonModule,
     MatInputModule,
@@ -43,7 +45,7 @@ import {
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    
+
   ]
 })
 export class SharedModule { }

@@ -10,19 +10,11 @@ import { RecipesService } from '../recipes.service';
 })
 export class PostPreviewComponent implements OnInit {
   @Input() post: Post;
-  link: string = '';
   constructor(
     private recipesService: RecipesService
   ) { }
 
   ngOnInit() {
-    let link = '';
-    let type = '/recipe';
-    // console.log(this.post instanceof Compilation);
-    if (this.post instanceof Compilation) {
-      type = `/compilation`;
-    }
-    this.link = `${type}/${this.post.slug}`;
   }
 
   selectPost() {

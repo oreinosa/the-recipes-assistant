@@ -32,11 +32,17 @@ export class MobileSearchDialogComponent implements OnInit {
         switchMap((search: string) => {
           if (search !== "") {
             this.isLoading = true;
-            return this.recipesService.getAutoComplete(search).pipe(finalize(() => this.isLoading = false))
+            return this.recipesService.getAutoComplete(search.trim().toLowerCase()).pipe(finalize(() => this.isLoading = false))
           }
           return of([]);
         })
       );
+  }
+
+  onPressEnter(search: string) {
+    if (search !== "") {
+      this.onSelectSearch(search.trim().toLowerCase());
+    }
   }
 
   onNoClick(): void {

@@ -1,8 +1,9 @@
-<mat-form-field class="w-full text-base">
-  <input type="text" placeholder="Search recipes..." matInput [formControl]="searchControl" [matAutocomplete]="auto">
+<div class="w-full text-base active:text-white">
+  <input type="text" placeholder="Search recipes..." [formControl]="searchControl" [matAutocomplete]="auto" 
+  class='form-input' (keyup.enter)='onPressEnter(searchControl?.value)'>
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='onSelectSearch($event?.option?.value?.display)'>
     <mat-option *ngFor="let result of results | async" [value]="result">
       {{ result.display }}
     </mat-option>
   </mat-autocomplete>
-</mat-form-field>
+</div>

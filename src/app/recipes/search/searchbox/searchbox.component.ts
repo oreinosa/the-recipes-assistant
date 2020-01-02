@@ -33,4 +33,10 @@ export class SearchboxComponent implements OnInit {
   onSelectSearch(query: string) {
     this.recipesService.setSearchQuery(query);
   }
+
+  onPressEnter(search: string) {
+    if (search !== "") {
+      this.onSelectSearch(search.trim().toLowerCase());
+    }
+  }
 } 

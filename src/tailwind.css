@@ -11,3 +11,10 @@
 .header-post-preview-container:hover a h1{
   @apply text-black;
 }
+
+input.form-input{
+  @apply bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal;
+}
+input.form-input:focus{
+  @apply outline-none shadow-outline;
+}
