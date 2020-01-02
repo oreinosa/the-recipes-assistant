@@ -7,9 +7,6 @@ import { Recipe } from '../shared/models/recipe';
 import { Compilation } from './../shared/models/compilation';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Section } from '../shared/models/section';
-import { Component } from '../shared/models/component';
-import { Instruction } from '../shared/models/instruction';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +14,8 @@ import { Instruction } from '../shared/models/instruction';
 export class RecipesService {
   private api = environment.api;
   private searchSubject = new BehaviorSubject<string>(null);
-  private currentPostSubject = new BehaviorSubject<Post>(null);
+  private currentRecipeSubject = new BehaviorSubject<Recipe>(null);
+  private currentCompilationSubject = new BehaviorSubject<Compilation>(null);
 
   constructor(
     private http: HttpClient
@@ -158,15 +156,39 @@ export class RecipesService {
   }
 
   setCurrentPost(post: Post) {
-    this.currentPostSubject.next(post);
+    console.log('selected ', post);
+    switch (true) {
+      case post instanceof Recipe:
+        this.setCurrentRecipe(post);
+        break;
+      case post instanceof Compilation:
+        this.setCurrentCompilation(post);
+        break;
+    }
   }
 
-  getCurrentPost(): Post {
-    return this.currentPostSubject.getValue();
+  setCurrentCompilation(compilation: Compilation) {
+    this.currentCompilationSubject.next(compilation);
   }
 
-  getCurrentPostObservable(): Observable<Post> {
-    return this.currentPostSubject.asObservable();
+  private getCurrentCompilationValue(): Compilation {
+    return this.currentCompilationSubject.getValue();
+  }
+
+  getCurrentCompilation(slug?: string): Observable<Compilation> {
+    return this.getCurrentCompilationValue() !== null ? this.currentCompilationSubject.asObservable() : this.getPostDetails(slug);
+  }
+
+  setCurrentRecipe(compilation: Recipe) {
+    this.currentRecipeSubject.next(compilation);
+  }
+
+  private getCurrentRecipeValue(): Recipe {
+    return this.currentRecipeSubject.getValue();
+  }
+
+  getCurrentRecipe(slug?: string): Observable<Recipe> {
+    return this.getCurrentRecipeValue() !== null ? this.currentRecipeSubject.asObservable() : this.getPostDetails(slug);
   }
 
   getFeed(): Observable<Post[]> {

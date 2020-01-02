@@ -9304,38 +9304,7 @@ export const RESULTS: any[] = [
       }
     ],
     "name": "Microwave Chocolate Lava Cake",
-    "renditions": [
-      {
-        "url": "https://vid.tasty.co/output/143371/square_720/1566982650",
-        "height": 720,
-        "width": 720,
-        "content_type": "video/mp4"
-      },
-      {
-        "url": "https://vid.tasty.co/output/143371/square_320/1566982650",
-        "height": 320,
-        "width": 320,
-        "content_type": "video/mp4"
-      },
-      {
-        "url": "https://vid.tasty.co/output/143371/landscape_720/1566982650",
-        "height": 720,
-        "width": 720,
-        "content_type": "video/mp4"
-      },
-      {
-        "url": "https://vid.tasty.co/output/143371/landscape_480/1566982650",
-        "height": 480,
-        "width": 480,
-        "content_type": "video/mp4"
-      },
-      {
-        "url": "https://vid.tasty.co/output/143371/hls24_1566982650.m3u8",
-        "height": 1080,
-        "width": 1080,
-        "content_type": "application/vnd.apple.mpegurl"
-      }
-    ],
+
     "tags": [
       {
         "display_name": "Microwave",

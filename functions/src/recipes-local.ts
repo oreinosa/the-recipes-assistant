@@ -115,7 +115,7 @@ export const getPostDetails = functions.https.onRequest(async (request, response
   if (slug && slug !== "") { // check if 'slug' param is valid
     try {
       const results = getPostDetailsFromTasty(slug); // get auto complete results from API using recieved slug
-      console.log(results);
+      // console.log(results);
       return response.status(200).send(results); // return array with results
     } catch (error) {
       // return object with error 

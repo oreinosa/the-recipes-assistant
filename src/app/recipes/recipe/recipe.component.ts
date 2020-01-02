@@ -18,14 +18,20 @@ export class RecipeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.$post = this.route.paramMap
+    this.$post = this.getPost();
+  }
+
+  getPost(): Observable<Recipe> {
+    return this.route.paramMap
       .pipe(
         map(params => params.get('slug')),
-        switchMap((slug) => !!this.recipesService.getCurrentPost() ?
-          this.recipesService.getCurrentPostObservable() :
-          this.recipesService.getPostDetails(slug)),
+        switchMap((slug) => this.recipesService.getCurrentRecipe(slug)),
         tap(details => console.log(details))
       );
+  }
+
+  selectPost(post: Recipe){
+    this.recipesService.setCurrentRecipe(post);
   }
 
 }

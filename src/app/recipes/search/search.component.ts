@@ -14,7 +14,7 @@ import { MobileSearchDialogComponent } from './mobile-search-dialog/mobile-searc
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  @Input() handset: string = 'xs';
+  @Input() displaySize: string = 'xs';
 
   constructor(
     private recipesService: RecipesService,

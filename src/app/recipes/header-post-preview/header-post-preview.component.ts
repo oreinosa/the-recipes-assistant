@@ -16,13 +16,6 @@ export class HeaderPostPreviewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let link = '';
-    let type = '/recipe';
-    // console.log(this.post instanceof Compilation);
-    if (this.post instanceof Compilation) {
-      type = `/compilation`;
-    }
-    this.link = `${type}/${this.post.slug}`;
   }
 
   selectPost() {

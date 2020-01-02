@@ -7,7 +7,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  @Input() isHandset: any;
+  @Input() displaySize = 'xs';
+  links = [
+    { path: '', label: 'Home', icon: 'home' }
+  ]
   constructor() { }
 
   ngOnInit() {

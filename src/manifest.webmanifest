@@ -1,6 +1,6 @@
 {
-  "name": "the-recipes-assistant",
-  "short_name": "the-recipes-assistant",
+  "name": "My Recipes Assistant",
+  "short_name": "Recipes",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

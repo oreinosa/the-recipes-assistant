@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Post } from 'src/app/shared/models/post';
 import { Compilation } from 'src/app/shared/models/compilation';
 import { RecipesService } from '../recipes.service';
+import { Recipe } from 'src/app/shared/models/recipe';
 
 @Component({
   selector: 'app-post-preview',
@@ -17,9 +18,8 @@ export class PostPreviewComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectPost() {
-    console.log('selected ', this.post.name);
-    this.recipesService.setCurrentPost(this.post);
+  selectPost(post: Post) {
+    this.recipesService.setCurrentPost(post);
   }
 
 }

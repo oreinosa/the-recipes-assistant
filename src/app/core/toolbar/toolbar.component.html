@@ -1,8 +1,45 @@
-<div class='flex bg-red-500 h-32 p-12'>
-  <div class="w-8/12 sm:w-5/12 md:w-3/12 lg:w-1/6 xl:w-1/6 mr-auto">
-    <h1 id='app-title' class='align-bottom text-white text-xl xl:text-2xl cursor-pointer' routerLink='/'>My Recipes Assistant</h1>
+<!-- <nav class='fixed w-full bg-red-500 h-32 p-12 mb-30 mt-0'>
+  <div class="container mx-auto flex flex-wrap items-center">
+    <div class="w-8/12 sm:w-5/12 md:w-3/12 lg:w-1/6 xl:w-1/6 mr-auto">
+      <h1 id='app-title' class='align-bottom text-white text-xl xl:text-2xl cursor-pointer' routerLink='/'>
+        My Recipes Assistant
+      </h1>
+    </div>
+    <div class="w-2/12 sm:w-1/12 md:w-3/12 lg:w-1/6 xl:w-1/6 ml-auto">
+      <app-search [handset]='(isHandset)'></app-search>
+    </div>
   </div>
-  <div class="w-2/12 sm:w-1/12 md:w-3/12 lg:w-1/6 xl:w-1/6 ml-auto">
-    <app-search [handset]='(isHandset)'></app-search>
+</nav> -->
+<!--Nav-->
+<nav class="bg-red-500 px-2 py-5 mt-0 fixed w-full z-10 top-0 shadow-lg">
+  <div class="container mx-auto flex flex-wrap items-center">
+    <div
+      class="flex w-full md:w-1/2 lg:w-1/4 justify-center md:justify-start  lg:justify-start text-white font-extrabold">
+      <a class="text-white no-underline hover:text-white hover:no-underline" routerLink='/'>
+        <span class="text-2xl pl-2"><i class="em em-grinning"></i>My Recipes Assistant</span>
+      </a>
+    </div>
+    <div class="flex w-full mt-5 md:mt-0 lg:mt-0 xl:mt-0 content-center justify-between md:w-1/2 md:justify-end lg:w-3/4 lg:justify-end">
+      <ul class="list-reset flex justify-between flex-1 md:flex-none lg:flex-none items-center">
+        <!-- <ng-container *ngIf='displaySize === "xs" || displaySize === "sm";else isDesktop'>
+          <li class="mr-3" *ngFor='let link of links'>
+            <button mat-icon-button [routerLink]='link.path'>
+              <mat-icon class='text-white'>{{ link.icon }}</mat-icon>
+            </button>
+          </li>
+        </ng-container>
+        <ng-template #isDesktop> -->
+        <li class="mr-3" *ngFor='let link of links'>
+          <button mat-button [routerLink]='link.path'>
+            <mat-icon class='text-white'>{{ link.icon }}</mat-icon>
+            <span class="text-white ml-1">{{ link.label }}</span>
+          </button>
+        </li>
+        <!-- </ng-template> -->
+        <li class="mx-3">
+          <app-search [displaySize]='displaySize'></app-search>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
+</nav>

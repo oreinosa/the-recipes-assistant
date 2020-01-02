@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
-  MatCardModule,
   MatButtonModule,
-  MatInputModule,
   MatIconModule,
   MatListModule,
   MatAutocompleteModule,
@@ -22,30 +20,24 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    MatCardModule,
     MatButtonModule,
-    MatInputModule,
     MatIconModule,
-    MatListModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-
+    MatListModule,
   ],
   exports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     VideoPlayerComponent,
-    MatCardModule,
     MatButtonModule,
-    MatInputModule,
     MatIconModule,
-    MatListModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-
+    MatListModule,
   ]
 })
 export class SharedModule { }
