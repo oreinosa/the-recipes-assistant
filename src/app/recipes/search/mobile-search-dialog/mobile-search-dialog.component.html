@@ -1,0 +1,30 @@
+<div class="flex flex-wrap">
+  <div class="w-full mb-5">
+    <div class="flex">
+      <div class="w-4/6">
+        <h1 class='text-lg text-gray-600'>Search recipes</h1>
+        <input type="text" placeholder="ie. chicken, meat" class='form-input mt-2' [formControl]="searchControl" (keyup.enter)='onPressEnter(searchControl?.value)'>
+      </div>
+      <div class="w-2/6 py-1">
+        <mat-spinner *ngIf='isLoading' diameter='30' color='accent' class='mx-auto'></mat-spinner>
+      </div>
+    </div>
+  </div>
+  <div class="w-full" *ngIf='$results | async as results'>
+    <hr>
+    <div class="mt-3">
+      <ng-container *ngIf='results?.length;else noResults'>
+        <h1 class='text-base font-bold'>Results:</h1>
+        <mat-list>
+          <mat-list-item *ngFor='let result of results' (click)='onSelectSearch(result.display)'
+            class='cursor-pointer hover:bg-gray-300'>
+            {{ result.display }}
+          </mat-list-item>
+        </mat-list>
+      </ng-container>
+      <ng-template #noResults>
+        <h1>No results...</h1>
+      </ng-template>
+    </div>
+  </div>
+</div>

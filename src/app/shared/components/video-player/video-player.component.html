@@ -1,0 +1,6 @@
+<video controls class='h-full w-full'>
+  <ng-container *ngFor='let rendition of renditions'>
+    <source [src]="rendition?.url" [type]="rendition?.content_type">
+  </ng-container>
+  Sorry, your browser doesn't support embedded videos.
+</video>

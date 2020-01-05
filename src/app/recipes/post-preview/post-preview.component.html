@@ -1,0 +1,9 @@
+<!-- <div class="p-5 max-w-sm rounded overflow-hidden shadow-lg cursor-pointer preview-container bg-white"> -->
+<div class="cursor-pointer preview-container">
+  <a [routerLink]="['/',type, post.slug]"  (click)='selectPost(post)'>
+    <div class="h-64 mb-2 thumbnail-image-container">
+      <img class='rounded h-full w-full' [src]="post?.thumbnail_url" [alt]="post?.name">
+    </div>
+    <h1 class='text-black'>{{ post?.name }}</h1>
+  </a>
+</div>

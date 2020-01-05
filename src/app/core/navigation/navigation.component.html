@@ -1,0 +1,5 @@
+<app-toolbar [displaySize]='isHandset$ | async' [hideNav]='hideNav'></app-toolbar>
+<div class="container min-h-screen mx-auto px-2 mt-40 md:mt-24 pt-h-screen">
+  <ng-content></ng-content>
+</div>
+<app-footer></app-footer>
