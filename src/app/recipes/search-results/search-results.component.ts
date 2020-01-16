@@ -27,7 +27,10 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
       takeUntil(this.ngUnsubscribe),
       map(params => params.get('q')),
       tap(query => {
+<<<<<<< HEAD
         if(!query) this.router.navigate(['/'])
+=======
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
         this.isLoading = true;
         this.posts = null;
         this.query = query;

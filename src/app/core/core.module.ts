@@ -10,11 +10,18 @@ import { HomeComponent } from './home/home.component';
 import { RecipesModule } from '../recipes/recipes.module';
 import { FooterComponent } from './footer/footer.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+<<<<<<< HEAD
 import { ActionsComponent } from './actions/actions.component';
 
 
 @NgModule({
   declarations: [NavigationComponent, HomeComponent, FooterComponent, ToolbarComponent, ActionsComponent],
+=======
+
+
+@NgModule({
+  declarations: [NavigationComponent, HomeComponent, FooterComponent, ToolbarComponent],
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
   imports: [
     SharedModule,
     RecipesModule,

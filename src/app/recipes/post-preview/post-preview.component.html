@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 <!-- <div class="p-5 max-w-sm rounded overflow-hidden shadow-lg cursor-pointer preview-container bg-white"> -->
 <div class="cursor-pointer preview-container">
   <a [routerLink]="['/',type, post.slug]"  (click)='selectPost(post)'>
+=======
+<div class="cursor-pointer preview-container" >
+  <a [routerLink]="post?.link" (click)='selectPost(post)'>
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
     <div class="h-64 mb-2 thumbnail-image-container">
       <img class='rounded h-full w-full' [src]="post?.thumbnail_url" [alt]="post?.name">
     </div>

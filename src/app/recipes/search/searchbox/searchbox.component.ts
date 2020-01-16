@@ -36,7 +36,11 @@ export class SearchboxComponent implements OnInit {
 
   onPressEnter(search: string) {
     if (search !== "") {
+<<<<<<< HEAD
       this.onSelectSearch(search);
+=======
+      this.onSelectSearch(search.trim().toLowerCase());
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
     }
   }
 } 

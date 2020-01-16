@@ -1,6 +1,11 @@
 <div class="w-full text-base active:text-white">
+<<<<<<< HEAD
   <input type="text" placeholder="Search recipes..." [formControl]="searchControl" [matAutocomplete]="auto" #search="matAutocompleteTrigger" 
   class='form-input text-black' (keyup.enter)='search.closePanel();onPressEnter(searchControl?.value)'>
+=======
+  <input type="text" placeholder="Search recipes..." [formControl]="searchControl" [matAutocomplete]="auto" 
+  class='form-input' (keyup.enter)='onPressEnter(searchControl?.value)'>
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
   <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='onSelectSearch($event?.option?.value?.display)'>
     <mat-option *ngFor="let result of results | async" [value]="result">
       {{ result.display }}

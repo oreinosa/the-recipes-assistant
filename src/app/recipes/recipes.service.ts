@@ -5,6 +5,10 @@ import { AutoComplete } from '../shared/models/auto-complete';
 import { Post } from '../shared/models/post';
 import { Recipe } from '../shared/models/recipe';
 import { Compilation } from './../shared/models/compilation';
+<<<<<<< HEAD
+=======
+import { map } from 'rxjs/operators';
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -20,6 +24,7 @@ export class RecipesService {
     private http: HttpClient
   ) { }
 
+<<<<<<< HEAD
   setSearchQuery(query: string) {
     this.searchSubject.next(query.trim().toLowerCase());
   }
@@ -88,6 +93,8 @@ export class RecipesService {
     });
   }
 
+=======
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
   // getFeed(): Observable<Post[]> {
   //   return this.http.get<Post[]>(`${this.api}/getFeed`)
   //     .pipe(
@@ -213,6 +220,90 @@ export class RecipesService {
   //       }))
   //     );
   // }
+<<<<<<< HEAD
+=======
+
+  setSearchQuery(query: string) {
+    this.searchSubject.next(query);
+  }
+
+  getSearchObservable(): Observable<string> {
+    return this.searchSubject.asObservable();
+  }
+
+  setCurrentPost(post: Post) {
+    console.log('selected ', post);
+    switch (true) {
+      case post instanceof Recipe:
+        this.setCurrentRecipe(post);
+        break;
+      case post instanceof Compilation:
+        this.setCurrentCompilation(post);
+        break;
+    }
+  }
+
+  setCurrentCompilation(compilation: Compilation) {
+    this.currentCompilationSubject.next(compilation);
+  }
+
+  private getCurrentCompilationValue(): Compilation {
+    return this.currentCompilationSubject.getValue();
+  }
+
+  getCurrentCompilation(slug?: string): Observable<Compilation> {
+    return this.getCurrentCompilationValue() !== null ? this.currentCompilationSubject.asObservable() : this.getPostDetails(slug);
+  }
+
+  setCurrentRecipe(compilation: Recipe) {
+    this.currentRecipeSubject.next(compilation);
+  }
+
+  private getCurrentRecipeValue(): Recipe {
+    return this.currentRecipeSubject.getValue();
+  }
+
+  getCurrentRecipe(slug?: string): Observable<Recipe> {
+    return this.getCurrentRecipeValue() !== null ? this.currentRecipeSubject.asObservable() : this.getPostDetails(slug);
+  }
+
+  getFeed(): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.api}/getFeed`)
+      .pipe(
+        map(results => results.map(result => {
+          if ((result as Compilation).recipes) {
+            return Object.assign(new Compilation, result);
+          }
+          return Object.assign(new Recipe, result);
+        }))
+      );
+  }
+
+  getSearchResults(query?: string): Observable<Post[]> {
+    return this.http.get<Post[]>(`${this.api}/getSearchResults`, {
+      params: {
+        q: query
+      }
+    });
+  }
+
+  getAutoComplete(prefix: string): Observable<AutoComplete[]> {
+    return this.http.get<AutoComplete[]>(`${this.api}/getAutoComplete`, {
+      params: {
+        prefix
+      }
+    });
+  }
+
+  getPostDetails(slug: string): Observable<Post> {
+    return this.http.get<Post>(`${this.api}/getPostDetails`, {
+      params: {
+        slug
+      }
+    });
+  }
+
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
   // getSearchResults(query: string): Observable<(Recipe | Compilation)[]> {
   //   return this.http.get<(Recipe | Compilation)[]>(`${this.api}/getSearchResults`, {
   //     params: {

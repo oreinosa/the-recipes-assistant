@@ -1,5 +1,9 @@
 <div class="flex text-white">
+<<<<<<< HEAD
   <ng-container *ngIf='screenSize < 3;else showInput'>
+=======
+  <ng-container *ngIf='displaySize === "xs" || displaySize === "sm";else showInput'>
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
     <div class="w-full mx-auto">
       <button mat-icon-button (click)='openDialog()'>
         <mat-icon>search</mat-icon>

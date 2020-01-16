@@ -9,7 +9,10 @@ import {
   MatAutocompleteModule,
   MatProgressSpinnerModule,
   MatDialogModule,
+<<<<<<< HEAD
   MatMenuModule
+=======
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
 
 } from '@angular/material';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
@@ -27,7 +30,10 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     MatProgressSpinnerModule,
     MatDialogModule,
     MatListModule,
+<<<<<<< HEAD
     MatMenuModule
+=======
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
   ],
   exports: [
     CommonModule,
@@ -40,7 +46,10 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     MatProgressSpinnerModule,
     MatDialogModule,
     MatListModule,
+<<<<<<< HEAD
     MatMenuModule
+=======
+>>>>>>> c5aaea40f931c378f1e0273504b87df8983f7e66
   ]
 })
 export class SharedModule { }
