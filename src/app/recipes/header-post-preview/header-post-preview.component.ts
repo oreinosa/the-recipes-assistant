@@ -1,35 +1,16 @@
-import { Post } from 'src/app/shared/models/post';
-import { Component, OnInit, Input } from '@angular/core';
-import { Compilation } from '../../shared/models/compilation';
+import { Component } from '@angular/core';
 import { RecipesService } from '../recipes.service';
-import { Recipe } from 'src/app/shared/models/recipe';
+import { PreviewContainer } from 'src/app/shared/models/preview-container';
 
 @Component({
   selector: 'app-header-post-preview',
   templateUrl: './header-post-preview.component.html',
   styleUrls: ['./header-post-preview.component.scss']
 })
-export class HeaderPostPreviewComponent implements OnInit {
-  @Input() post: Post;
-  type = 'recipe';
+export class HeaderPostPreviewComponent extends PreviewContainer  {
   constructor(
     public recipesService: RecipesService
-  ) { }
-
-  ngOnInit() {
-    switch (true) {
-      case this.post instanceof Recipe:
-        this.type = 'recipe';
-        break;
-      case this.post instanceof Compilation:
-        this.type = 'compilation';
-        break;
-    }
+  ) {
+    super(recipesService);
   }
-
-  selectPost() {
-    console.log('selected ', this.post.name);
-    this.recipesService.setCurrentPost(this.post);
-  }
-
 }

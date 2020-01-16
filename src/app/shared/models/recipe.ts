@@ -7,6 +7,7 @@ import { Tag } from './tag';
 
 export class Recipe extends Post {
   constructor(
+    public recipes: Recipe[] = [],
     public id?: string,
     public keywords?: string,
     public credits?: string,
@@ -27,6 +28,6 @@ export class Recipe extends Post {
     public instructions?: Instruction[],
     public user_ratings?: UserRating
   ) {
-    super(id, keywords, credits, name, renditions, description, slug, thumbnail_url, tags);
+    super(recipes, id, keywords, credits, name, renditions, description, slug, thumbnail_url, tags);
   }
 }

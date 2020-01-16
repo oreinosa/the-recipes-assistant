@@ -6,30 +6,44 @@
       </h1>
     </div>
     <div class="w-2/12 sm:w-1/12 md:w-3/12 lg:w-1/6 xl:w-1/6 ml-auto">
-      <app-search [handset]='(isHandset)'></app-search>
+      <app-search [handset]='(screenSize)'></app-search>
     </div>
   </div>
 </nav> -->
 <!--Nav-->
-<nav class="bg-red-500 px-2 py-5 mt-0 fixed w-full z-10 top-0 shadow-lg">
-  <div class="container mx-auto flex flex-wrap items-center">
-    <div [class.hidden]='hideNav'
-      class="flex w-full md:w-1/2 lg:w-1/4 justify-center md:justify-start  lg:justify-start text-white font-extrabold">
-      <a class="text-white no-underline hover:text-white hover:no-underline" routerLink='/'>
-        <span class="text-2xl pl-2"><i class="em em-grinning"></i>My Recipes Assistant</span>
+<nav class="bg-red-500 px-2 py-5 mt-0 fixed w-full z-10 top-0 shadow-lg text-white">
+  <div class="container mx-auto flex flex-wrap">
+    <div class="w-4/12 md:w-1/6 lg:w-1/12 xl:w-1/12 justify-start font-extrabold">
+      <a class="no-underline hover:text-gray-400 hover:no-underline" routerLink='/'>
+        <span class="text-2xl pl-2 tracking-wider">Cheffy</span>
       </a>
     </div>
-    <div
-      class="flex w-full mt-5 md:mt-0 lg:mt-0 xl:mt-0 content-center justify-between md:w-1/2 md:justify-end lg:w-3/4 lg:justify-end">
+    <div class="w-0 md:w-3/6 lg:w-6/12 xl:w-6/12 mr-auto" *ngIf='screenSize > 2'>
+      <ul class="list-reset flex justify-start flex-1 md:flex-none lg:flex-none items-center">
+        <li class="mr-3" *ngFor='let link of links'>
+          <button mat-button [routerLink]='link.path'>
+            {{ link.label }}
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="w-8/12 justify-end md:w-2/6 lg:w-5/12 xl:w-5/12 ml-auto">
+      <ul class="list-reset flex justify-end flex-1 md:flex-none lg:flex-none items-center">
+        <li class="mr-3">
+          <app-search [screenSize]='screenSize'></app-search>
+        </li>
+        <li class='mr-3'>
+          <app-actions [actions]='actions'></app-actions>
+        </li>
+      </ul>
+    </div>
+    <div class="w-full mt-2 justify-end" *ngIf='screenSize < 3'>
       <ul class="list-reset flex justify-between flex-1 md:flex-none lg:flex-none items-center">
         <li class="mr-3" *ngFor='let link of links'>
           <button mat-button [routerLink]='link.path'>
-            <mat-icon class='text-white'>{{ link.icon }}</mat-icon>
-            <span class="text-white ml-1">{{ link.label }}</span>
+            <mat-icon class=''>{{ link.icon }}</mat-icon>
+            <span class="ml-1">{{ link.label }}</span>
           </button>
-        </li>
-        <li class="mx-3">
-          <app-search [displaySize]='displaySize'></app-search>
         </li>
       </ul>
     </div>

@@ -4,13 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Recipe } from 'src/app/shared/models/recipe';
+import { PostContainer } from 'src/app/shared/models/post-container';
 
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.scss']
 })
-export class RecipeComponent implements OnInit {
+export class RecipeComponent implements OnInit, PostContainer {
   $post: Observable<Recipe>;
   constructor(
     private route: ActivatedRoute,

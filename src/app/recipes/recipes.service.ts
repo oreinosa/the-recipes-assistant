@@ -5,7 +5,6 @@ import { AutoComplete } from '../shared/models/auto-complete';
 import { Post } from '../shared/models/post';
 import { Recipe } from '../shared/models/recipe';
 import { Compilation } from './../shared/models/compilation';
-import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -29,30 +28,20 @@ export class RecipesService {
     return this.searchSubject.asObservable();
   }
 
-  setCurrentPost(post: Post) {
-    console.log('selected ', post);
-    switch (true) {
-      case post instanceof Recipe:
-        this.setCurrentRecipe(post);
-        break;
-      case post instanceof Compilation:
-        this.setCurrentCompilation(post);
-        break;
-    }
-  }
-
   setCurrentCompilation(compilation: Compilation) {
     this.currentCompilationSubject.next(compilation);
   }
 
   private getCurrentCompilationValue(): Compilation {
+    console.log(this.currentCompilationSubject.value);
     return this.currentCompilationSubject.getValue();
   }
 
   getCurrentCompilation(slug?: string): Observable<Compilation> {
-    return this.getCurrentCompilationValue() !== null ?
-      this.currentCompilationSubject.asObservable() :
-      this.getPostDetails(slug);
+    const currentCompilation = this.getCurrentCompilationValue();
+    if (currentCompilation !== null && currentCompilation.slug === slug)
+      return this.currentCompilationSubject.asObservable();
+    else return this.getPostDetails(slug);
   }
 
   setCurrentRecipe(compilation: Recipe) {
@@ -60,23 +49,19 @@ export class RecipesService {
   }
 
   private getCurrentRecipeValue(): Recipe {
+    console.log(this.currentRecipeSubject.value);
     return this.currentRecipeSubject.getValue();
   }
 
-  getCurrentRecipe(slug?: string): Observable<Recipe> {
-    return this.getCurrentRecipeValue() !== null ? this.currentRecipeSubject.asObservable() : this.getPostDetails(slug);
+  getCurrentRecipe(slug: string): Observable<Recipe> {
+    const currentRecipe = this.getCurrentRecipeValue();
+    if (currentRecipe !== null && currentRecipe.slug === slug)
+      return this.currentRecipeSubject.asObservable();
+    else return this.getPostDetails(slug);
   }
 
   getFeed(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${this.api}/getFeed`)
-      .pipe(
-        map(results => results.map(result => {
-          if ((result as Compilation).recipes) {
-            return Object.assign(new Compilation, result);
-          }
-          return Object.assign(new Recipe, result);
-        }))
-      );
+    return this.http.get<Post[]>(`${this.api}/getFeed`);
   }
 
   getSearchResults(query?: string): Observable<Post[]> {
@@ -84,15 +69,7 @@ export class RecipesService {
       params: {
         q: query
       }
-    })
-      .pipe(
-        map(results => results.map(result => {
-          if ((result as Compilation).recipes) {
-            return Object.assign(new Compilation, result);
-          }
-          return Object.assign(new Recipe, result);
-        }))
-      );
+    });
   }
 
   getAutoComplete(prefix: string): Observable<AutoComplete[]> {

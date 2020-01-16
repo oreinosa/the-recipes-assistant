@@ -10,10 +10,11 @@ import { HomeComponent } from './home/home.component';
 import { RecipesModule } from '../recipes/recipes.module';
 import { FooterComponent } from './footer/footer.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ActionsComponent } from './actions/actions.component';
 
 
 @NgModule({
-  declarations: [NavigationComponent, HomeComponent, FooterComponent, ToolbarComponent],
+  declarations: [NavigationComponent, HomeComponent, FooterComponent, ToolbarComponent, ActionsComponent],
   imports: [
     SharedModule,
     RecipesModule,

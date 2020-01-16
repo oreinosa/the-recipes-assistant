@@ -9,6 +9,7 @@ import {
   MatAutocompleteModule,
   MatProgressSpinnerModule,
   MatDialogModule,
+  MatMenuModule
 
 } from '@angular/material';
 import { VideoPlayerComponent } from './components/video-player/video-player.component';
@@ -26,6 +27,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     MatProgressSpinnerModule,
     MatDialogModule,
     MatListModule,
+    MatMenuModule
   ],
   exports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { VideoPlayerComponent } from './components/video-player/video-player.com
     MatProgressSpinnerModule,
     MatDialogModule,
     MatListModule,
+    MatMenuModule
   ]
 })
 export class SharedModule { }

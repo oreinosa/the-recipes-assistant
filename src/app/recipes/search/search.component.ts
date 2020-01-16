@@ -1,8 +1,5 @@
 import { RecipesService } from './../../recipes/recipes.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { switchMap, debounceTime, finalize, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AutoComplete } from '../../shared/models/auto-complete';
 import { MatDialog } from '@angular/material';
@@ -14,7 +11,7 @@ import { MobileSearchDialogComponent } from './mobile-search-dialog/mobile-searc
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  @Input() displaySize: string = 'xs';
+  @Input() screenSize: number = 4;
 
   constructor(
     private recipesService: RecipesService,

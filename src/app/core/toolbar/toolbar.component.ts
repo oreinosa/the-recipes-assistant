@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,8 +6,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  @Input() displaySize = 'xs';
+  @Input() screenSize = 4;
   @Input() hideNav = false;
+  actions = [
+    { path: 'login', label: 'Login', icon: 'people' },
+    { path: 'register', label: 'Register', icon:"person_add"}
+  ]
   links = [
     { path: '', label: 'Home', icon: 'home' }
   ]

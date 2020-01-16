@@ -5,6 +5,7 @@ import { Post } from './post';
 
 export class Compilation extends Post {
   constructor(
+    public recipes: Recipe[] = [],
     public id?: string,
     public keywords?: string,
     public credits?: string,
@@ -13,10 +14,9 @@ export class Compilation extends Post {
     public description?: string,
     public slug?: string,
     public thumbnail_url?: string,
-    public recipes?: Recipe[],
     public tags?: Tag[],
   ) {
-    super(id, keywords, credits, name, renditions, description, slug, thumbnail_url, tags);
+    super(recipes, id, keywords, credits, name, renditions, description, slug, thumbnail_url, tags);
   }
 
 }

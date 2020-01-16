@@ -1,9 +1,10 @@
 import * as functions from 'firebase-functions';
 import { RESULTS, FEED } from './results';
-
+const results = [...RESULTS, ...FEED];
 const getSearchResultsFromTasty = async (q: string) => {
   try {
-    const response = RESULTS.filter((result: any) => {
+    q = q.toLowerCase().trim();
+    const response = results.filter((result: any) => {
       const { name, description } = result;
       return name.toLowerCase().includes(q) || (description && description.toLowerCase().includes(q));
     });
@@ -74,7 +75,7 @@ export const getAutoComplete = functions.https.onRequest(async (request, respons
 
 const getFeedFromTasty = async () => {
   try {
-    return FEED;
+    return results;
   } catch (e) {
     console.log(e);
     throw e;
@@ -98,7 +99,7 @@ export const getFeed = functions.https.onRequest(async (request, response) => {
 
 const getPostDetailsFromTasty = (slug: string) => {
   // try {
-  const response = RESULTS.find((result: any) => {
+  const response = results.find((result: any) => {
     return result.slug == slug;
   });
   return response;

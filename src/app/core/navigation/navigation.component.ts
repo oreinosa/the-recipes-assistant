@@ -13,33 +13,32 @@ export class NavigationComponent {
   scrollTop = 0;
   hideNav = false;
 
-  isHandset = 'desktop';
-  isHandset$: Observable<any> = this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
-    .pipe(
-      map(result => {
-        switch (true) {
-          case this.breakpointObserver.isMatched('(max-width: 599.99px)'):
-            return 'xs';
-          case this.breakpointObserver.isMatched('(min-width: 600px) and (max-width: 959.99px)'):
-            return 'sm';
-          case this.breakpointObserver.isMatched('(min-width: 960px) and (max-width: 1279.99px)'):
-            return 'md';
-          default:
-            return 'desktop';
-        }
-      }),
-      tap(result => {
-        console.log(result);
-        this.isHandset = result;
-      }),
-      shareReplay()
-    );
+  screenSize = 4;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private router: Router) { }
 
   ngOnInit() {
+      this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
+    .pipe(
+      map(result => {
+        switch (true) {
+          case this.breakpointObserver.isMatched('(max-width: 599.99px)'):
+            return 1;
+          case this.breakpointObserver.isMatched('(min-width: 600px) and (max-width: 959.99px)'):
+            return 2;
+          case this.breakpointObserver.isMatched('(min-width: 960px) and (max-width: 1279.99px)'):
+            return 3;
+          default:
+            return 4;
+        }
+      }))
+      .subscribe(result => {
+        console.log(result);
+        this.screenSize = result;
+      });
+      
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
@@ -50,7 +49,7 @@ export class NavigationComponent {
 
 
   onScroll(event) {
-    if (this.isHandset === "xs" || this.isHandset === "sm") {
+    if (this.screenSize < 3) {
       this.hideNav = this.scrollTop < event.target.scrollTop;
       this.scrollTop = event.target.scrollTop;
       console.log(this.hideNav);
